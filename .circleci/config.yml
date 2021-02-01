@@ -1,0 +1,22 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: &workspace_root /tmp/workspace
+
+jobs:
+  build-and-test:
+    <<: *defaults
+    docker:
+      - image: cimg/node:lts
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: node temp.js
+
+workflows:
+  version: 2.1
+  build-test-and-push:
+    jobs:
+      - build-and-test:
+        context: Gatsby-Build-Secrets
