@@ -18,5 +18,4 @@ workflows:
   version: 2.1
   build-test-and-push:
     jobs:
-      - build-and-test:
-        context: Gatsby-Build-Secrets
+      - build-and-test
